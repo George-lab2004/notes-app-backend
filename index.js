@@ -7,7 +7,17 @@ import { notesRouter } from './src/modules/notes/notes.routes.js'
 import { User } from './models/user.model.js'
 const app = express()
 const port = process.env.PORT || 3000
-dbConnection()
+
+// Ensure DB is connected before every request (required for Vercel serverless)
+app.use(async (req, res, next) => {
+    try {
+        await dbConnection()
+        next()
+    } catch (error) {
+        next(error)
+    }
+})
+
 // express.json() MUST come before any route that reads req.body
 app.use(cors())
 app.use(express.json())
