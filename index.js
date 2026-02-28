@@ -30,4 +30,10 @@ app.use("/users",userRouter)
 app.use(notesRouter)
 
 app.get('/', (req, res) => res.send('Hello World!'))
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+// app.listen only runs locally — Vercel handles the server in production
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+}
+
+export default app
