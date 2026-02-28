@@ -3,7 +3,7 @@
 A fullstack notes application with user authentication, email verification, and ownership-protected CRUD operations.
 
 **Live API:** https://notes-app-backend-six-gamma.vercel.app  
-**Frontend:** https://notes-app-frontend.vercel.app
+**Frontend:** https://notes-app-backend-p3wd.vercel.app
 
 ---
 
