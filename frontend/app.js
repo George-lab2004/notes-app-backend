@@ -1,5 +1,5 @@
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
-const API = 'http://localhost:3000'
+const API = 'https://notes-app-backend-six-gamma.vercel.app'
 
 // ─── STATE ───────────────────────────────────────────────────────────────────
 let token      = localStorage.getItem('token')    || null
