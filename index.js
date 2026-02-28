@@ -43,7 +43,8 @@ app.get('/', (req, res) => res.json({ status: 'ok', message: 'Hello World!' }))
 
 // Global error handler — catches any next(error) calls and returns JSON (not HTML)
 app.use((err, req, res, next) => {
-    console.error(err)
+    console.error('ERROR:', err.message)
+    if (res.headersSent) return next(err)
     res.status(err.status || 500).json({ message: err.message || 'Internal server error' })
 })
 
