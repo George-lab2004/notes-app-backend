@@ -29,7 +29,13 @@ app.get("/verify/:email", async (req, res, next) => {
 app.use("/users",userRouter)
 app.use(notesRouter)
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.json({ status: 'ok', message: 'Hello World!' }))
+
+// Global error handler — catches any next(error) calls and returns JSON (not HTML)
+app.use((err, req, res, next) => {
+    console.error(err)
+    res.status(err.status || 500).json({ message: err.message || 'Internal server error' })
+})
 
 // app.listen only runs locally — Vercel handles the server in production
 if (process.env.NODE_ENV !== 'production') {
